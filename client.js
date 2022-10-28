@@ -43,15 +43,59 @@ console.log('array of employee data: ',  employees );
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-
-
-
 // This function will calculate 1 employee's bonus!
 //
-function calculateIndividualEmployeeBonus( employee ) {  
-  // your logic here
-  
-  
-  // return new object with bonus results
 
-}
+
+
+let bonusPercentage = 0;
+let annualSalary = 0;
+
+function calculateIndividualEmployeebonusPercentage( employee ){  
+
+  for (let i=0; i<employees.length; i++){
+    if (employee.reviewRating <= 2){
+      bonusPercentage = 0;
+    } if (employee.reviewRating == 3){
+      bonusPercentage = .04;
+    } if (employee.reviewRating == 4){
+        bonusPercentage = .06;
+      } if (employee.reviewRating == 5){
+        bonusPercentage = .1;
+      }
+       
+    if (parseInt(employee.employeeNumber) < 10000){
+      bonusPercentage += .05;
+    } if (parseInt(employee.annualSalary) > 65000){
+      bonusPercentage -= .01;
+    } if (bonusPercentage > .13){
+      bonusPercentage = .13;
+    } if (bonusPercentage < 0){
+      bonusPercentage = 0;
+    }
+  }
+    return bonusPercentage;
+    
+  } //end function
+  
+  // your logic here
+
+  let totalCompensation = 0;
+
+  for (let i=0; i<employees.length; i++){
+    console.log(`compensation ${totalCompensation} = percentage ${employees[i].bonusPercentage} * salary ${employees[i].annualSalary}`);
+  }
+    
+  // return new object with bonus results
+  let person = [];
+  
+  for (let i=0; i<employees.length; i++) {
+    person[i] = {
+      name: employees[i].name,
+      bonusPercentage: [],
+      totalCompensation: [],
+      totalBonus: [],
+    }
+    console.log(person[i]);
+  }
+console.log('bonus percentage: ', calculateIndividualEmployeebonusPercentage(employees[2]));
