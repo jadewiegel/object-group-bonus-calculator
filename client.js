@@ -83,7 +83,7 @@ function calculateIndividualEmployeebonusPercentage( employee ){
   let totalCompensation = 0;
 
   for (let i=0; i<employees.length; i++){
-    console.log(`compensation ${totalCompensation} = percentage ${employees[i].bonusPercentage} * salary ${employees[i].annualSalary}`);
+    console.log(`compensation ${totalCompensation} = percentage ${bonusPercentage} * salary ${employees[i].annualSalary}`);
   }
     
   // return new object with bonus results
