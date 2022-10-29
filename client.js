@@ -50,6 +50,8 @@ console.log('array of employee data: ',  employees );
 
 let bonusPercentage = 0;
 let annualSalary = 0;
+let totalCompensation = 0;
+let totalBonus = 0;
 
 function calculateIndividualEmployeebonusPercentage( employee ){  
 
@@ -72,30 +74,21 @@ function calculateIndividualEmployeebonusPercentage( employee ){
       bonusPercentage = .13;
     } if (bonusPercentage < 0){
       bonusPercentage = 0;
-    }
+    }   
   }
-    return bonusPercentage;
-    
-  } //end function
   
-  // your logic here
-
-  let totalCompensation = 0;
-
-  for (let i=0; i<employees.length; i++){
-    console.log(`compensation ${totalCompensation} = percentage ${bonusPercentage} * salary ${employees[i].annualSalary}`);
-  }
-    
+    return bonusPercentage, totalCompensation;  
+} //end function
+  // your logic here  
   // return new object with bonus results
   let person = [];
   
   for (let i=0; i<employees.length; i++) {
     person[i] = {
       name: employees[i].name,
-      bonusPercentage: [],
-      totalCompensation: [],
-      totalBonus: [],
+      bonusPercentage: bonusPercentage[i],
+      totalCompensation: totalCompensation[i],
+      totalBonus: totalBonus[i],
     }
     console.log(person[i]);
   }
-console.log('bonus percentage: ', calculateIndividualEmployeebonusPercentage(employees[2]));
