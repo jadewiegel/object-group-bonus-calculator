@@ -52,43 +52,54 @@ let bonusPercentage = 0;
 let annualSalary = 0;
 let totalCompensation = 0;
 let totalBonus = 0;
+let newPersonObject = [];
+
 
 function calculateIndividualEmployeebonusPercentage( employee ){  
 
-  for (let i=0; i<employees.length; i++){
-    if (employee.reviewRating <= 2){
-      bonusPercentage = 0;
-    } if (employee.reviewRating == 3){
+for (let i=0; i<employees.length; i++){
+  if (employees[i].reviewRating <= 2){
+    bonusPercentage = 0;
+  } if (employees[i].reviewRating == 3){
       bonusPercentage = .04;
-    } if (employee.reviewRating == 4){
+    } if (employees[i].reviewRating == 4){
         bonusPercentage = .06;
-      } if (employee.reviewRating == 5){
+      } if (employees[i].reviewRating == 5){
         bonusPercentage = .1;
       }
        
-    if (parseInt(employee.employeeNumber) < 10000){
+    if (parseInt(employees[i].employeeNumber) < 10000){
       bonusPercentage += .05;
-    } if (parseInt(employee.annualSalary) > 65000){
+    } if (parseInt(employees[i].annualSalary) > 65000){
       bonusPercentage -= .01;
     } if (bonusPercentage > .13){
       bonusPercentage = .13;
     } if (bonusPercentage < 0){
       bonusPercentage = 0;
-    }   
-  }
+    }  
+
+    
+    totalBonus = employees[i].annualSalary * bonusPercentage;
   
-    return bonusPercentage, totalCompensation;  
+    totalCompensation = totalBonus + parseInt(employees[i].annualSalary);
+
+    bonusPercentage = (bonusPercentage * 100).toString() + "%";
+
+    newPersonObject[i] = {
+      name: employees[i].name,
+      bonusPercentage: bonusPercentage,
+      totalCompensation: totalCompensation,
+      totalBonus: totalBonus,
+    }
+    console.log(newPersonObject[i]);
+  }
+
+    return bonusPercentage, totalCompensation, totalBonus;  
 } //end function
+  
+
   // your logic here  
   // return new object with bonus results
-  let person = [];
+  calculateIndividualEmployeebonusPercentage(employees);
   
-  for (let i=0; i<employees.length; i++) {
-    person[i] = {
-      name: employees[i].name,
-      bonusPercentage: bonusPercentage[i],
-      totalCompensation: totalCompensation[i],
-      totalBonus: totalBonus[i],
-    }
-    console.log(person[i]);
-  }
+
